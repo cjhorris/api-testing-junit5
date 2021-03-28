@@ -7,6 +7,7 @@ import com.model.TradeResponse;
 import com.rest.RestClient;
 import com.services.CandleStickService;
 import com.services.TradeService;
+import com.utils.SortUtil;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class CandleSticksTests {
     private final CandleStickService candleStickService = new CandleStickService();
     private final TradeService tradeService = new TradeService();
     private final RestClient restClient = new RestClient();
+    private final SortUtil sortUtil = new SortUtil();
 
     @Test
     void verifyResponseMethod() throws IOException, InterruptedException {
@@ -81,16 +83,9 @@ public class CandleSticksTests {
 
         Number candleStickHighestPrice = candleStickData.getH().floatValue();
         Number candleStickLowestPrice = candleStickData.getL().floatValue();
-        Number tradesHighestPrice = tradeData.get(0).getP();
-        Number tradesLowestPrice = tradeData.get(0).getP();
 
-        for (TradeData td : tradeData) {
-            if (td.getP().floatValue() > tradesHighestPrice.floatValue()) {
-                tradesHighestPrice = td.getP().floatValue();
-            } else if (td.getP().floatValue() < tradesLowestPrice.floatValue()) {
-                tradesLowestPrice = td.getP().floatValue();
-            }
-        }
+        Number tradesHighestPrice = sortUtil.getHighestPrice(tradeData);
+        Number tradesLowestPrice = sortUtil.getLowestPrice(tradeData);
 
         assert tradesLowestPrice.equals(candleStickLowestPrice);
         assert tradesHighestPrice.equals(candleStickHighestPrice);
@@ -118,16 +113,9 @@ public class CandleSticksTests {
 
         Number candleStickHighestPrice = candleStickData.getH().floatValue();
         Number candleStickLowestPrice = candleStickData.getL().floatValue();
-        Number tradesHighestPrice = tradeData.get(0).getP();
-        Number tradesLowestPrice = tradeData.get(0).getP();
 
-        for (TradeData td : tradeData) {
-            if (td.getP().floatValue() > tradesHighestPrice.floatValue()) {
-                tradesHighestPrice = td.getP().floatValue();
-            } else if (td.getP().floatValue() < tradesLowestPrice.floatValue()) {
-                tradesLowestPrice = td.getP().floatValue();
-            }
-        }
+        Number tradesHighestPrice = sortUtil.getHighestPrice(tradeData);
+        Number tradesLowestPrice = sortUtil.getLowestPrice(tradeData);
 
         assert tradesLowestPrice.equals(candleStickLowestPrice);
         assert tradesHighestPrice.equals(candleStickHighestPrice);
