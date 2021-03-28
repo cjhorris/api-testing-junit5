@@ -57,7 +57,6 @@ public class CandleSticksTests {
         Number firstTradePrice = tradeData.get(tradeData.size() - 1).getP().floatValue();
         Number candleStickOpenPrice = candleStickData.getO().floatValue();
 
-
         assert firstTradePrice.equals(candleStickOpenPrice);
 
     }

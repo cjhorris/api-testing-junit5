@@ -30,7 +30,7 @@ public class CandleStickService {
     public CandleStickData getCandleStickByTimestamp(String instrumentName, String timeframe, Long timestamp)
             throws IOException, InterruptedException {
         logger.info("getCandleStickByTimestamp for: " + "instrument: " + instrumentName + " timeframe: "
-                + timeframe + "timestamp: timestamp");
+                + timeframe + " timestamp: " + timestamp);
         CandleStickResponse candleStickResponse = getCandleStick(instrumentName, timeframe);
         ArrayList<CandleStickData> candleStickData = candleStickResponse.getResult().getData();
         for (CandleStickData csd : candleStickData) {
