@@ -38,6 +38,6 @@ public class CandleStickService {
                 return csd;
             }
         }
-        return null;
+        throw new RuntimeException("CandleStickData not found");
     }
 }

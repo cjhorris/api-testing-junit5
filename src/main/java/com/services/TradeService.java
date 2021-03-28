@@ -12,8 +12,7 @@ public class TradeService {
     Logger logger = Logger.getLogger(TradeService.class.getName());
     private final RestClient restClient = new RestClient();
 
-    public TradeResponse getTrade(String instrumentName)
-            throws IOException, InterruptedException {
+    public TradeResponse getTrade(String instrumentName) throws IOException, InterruptedException {
         return restClient.getTrades(instrumentName);
     }
 
