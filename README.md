@@ -1,4 +1,5 @@
-# crypto.com Candlestick api testing
+# api-testing-junit5
+#### crypto.com Candlestick api testing
 
 This `crypto-com-api-testing-junit5` project demonstrates how to test crypto.com Candlestick and run tests based on Junit
 
